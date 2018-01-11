@@ -1,23 +1,22 @@
-$(document).ready(function () {
+$(document).ready(function() {
+  // Funcionalidad de Materialize para que links del navbar se conviertan en menu hamburguesa
+  $('.button-collapse').sideNav();
 
-  //Funcionalidad de Materialize para que links del navbar se conviertan en menu hamburguesa
-  $(".button-collapse").sideNav();
 
-
-  //Funcionalidad para que podamos hacer nuevas publicaciones en nuestro perfil
+  // Funcionalidad para que podamos hacer nuevas publicaciones en nuestro perfil
   var textArea = $('#text-area');
-  textArea.on('keyup', function (event) {
-    //console.log(event.target);
-    //console.log($(this).val());
-    //console.log($(this).val().length);
+  textArea.on('keyup', function(event) {
+    // console.log(event.target);
+    // console.log($(this).val());
+    // console.log($(this).val().length);
     if ($(this).val().length > 10) {
       $(this).css('color', 'teal');
       $('#post-btn').attr('disabled', false);
     }
   });
 
-  $('#post-btn').on('click', function (event) {
-    event.preventDefault()
+  $('#post-btn').on('click', function(event) {
+    event.preventDefault();
     var textValue = textArea.val();
     $('.profile-posts-container').prepend('<div class="profile-post">' + textValue + '</div>');
     textArea.val('');
@@ -25,7 +24,7 @@ $(document).ready(function () {
 
 
   // Funcionalidad para que el botón follow se active en los perfiles de amigos
-  $('#follow-btn').on('click', function (e) {
+  $('#follow-btn').on('click', function(e) {
     e.preventDefault();
     $button = $(this);
     if ($button.hasClass('follow')) {
@@ -33,49 +32,46 @@ $(document).ready(function () {
       $button.removeClass('unfollow');
       $button.val('Siguiendo');
     } else {
-
       $button.addClass('follow');
       $button.val('Seguir');
     }
   });
 
-  $('#follow-btn').hover(function () {
+  $('#follow-btn').hover(function() {
     $button = $(this);
     if ($button.hasClass('following')) {
       $button.addClass('unfollow');
       $button.val('Dejar de seguir');
     }
-  }, function () {
+  }, function() {
     if ($button.hasClass('following')) {
       $button.removeClass('unfollow');
       $button.val('Siguiendo');
     }
   });
 
-    $(".button-collapse").sideNav();
+  $('.button-collapse').sideNav();
 
-    var textArea = $('#text-area');
+  var textArea = $('#text-area');
 
-    textArea.on('keyup', function(event) {
-        //console.log(event.target);
-        //console.log($(this).val());
-        //console.log($(this).val().length);
-        if($(this).val().length > 10) {
-          $(this).css('color', 'teal');
-          $('#post-btn').attr('disabled', false);
-        }
-      });
+  textArea.on('keyup', function(event) {
+    // console.log(event.target);
+    // console.log($(this).val());
+    // console.log($(this).val().length);
+    if ($(this).val().length > 10) {
+      $(this).css('color', 'teal');
+      $('#post-btn').attr('disabled', false);
+    }
+  });
     
-      $('#post-btn').on('click', function(event) {
-        event.preventDefault()
-        var textValue = textArea.val();
-        $('.profile-posts-container').prepend('<div class="profile-post">'+ textValue +'</div>');
-        textArea.val('');
-      });
-      // Agregamos la imagen de perfil
-      var myphoto = localStorage.getItem('imgprofile');
-      var $imgid = $('                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                               #imgprofile');
-      $imgid.attr('src', myphoto);
-      
-
+  $('#post-btn').on('click', function(event) {
+    event.preventDefault();
+    var textValue = textArea.val();
+    $('.profile-posts-container').prepend('<div class="profile-post">' + textValue + '</div>');
+    textArea.val('');
+  });
+  // Agregamos la imagen de perfil
+  var myphoto = localStorage.getItem('imgprofile');
+  var $imgid = $('                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                               #imgprofile');
+  $imgid.attr('src', myphoto);
 });
